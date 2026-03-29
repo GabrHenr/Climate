@@ -1,59 +1,102 @@
-import { Background, Button } from "@react-navigation/elements";
 import { StatusBar } from "expo-status-bar";
-import { useState } from "react";
-import { StyleSheet, Text, TextInput, View } from "react-native";
+import React, { useState } from "react";
+import {
+  Alert,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+  TouchableOpacity,
+} from "react-native";
+import Header from "../components/header";
+import { LinearGradient } from "expo-linear-gradient";
 
-export default function Index() {
-  const [username, setUsername] = useState("");
+export default function App() {
+  const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: "#b7e0d3",
-      alignItems: "center",
-      justifyContent: "center",
-    },
-  });
-  const handleLogin = () => {
-    // Implement your login logic here
-    alert(`Username: ${username}, Password: ${password}`);
+
+  const handleButtonPress = () => {
+    Alert.alert(
+      "Credenciais Digitadas",
+      `Usuário: ${user}
+Senha: ${password}`,
+      [
+        {
+          text: "OK",
+          onPress: () => console.log("OK Pressed"),
+          style: "cancel",
+        },
+      ],
+      { cancelable: true },
+    );
   };
   return (
-    <View
+    <LinearGradient
+      colors={["#87CEEB", "#FFFFFF"]}
       style={styles.container}
+      start={{ x: 0.5, y: 0 }}
+      end={{ x: 0.5, y: 1 }}
     >
-      <Text>Climate and Weather App</Text>
-      <Text>Type your User</Text>
-      <TextInput
-        placeholder="Enter your username"
-        style={{
-          borderWidth: 1,
-          borderColor: "gray",
-          width: 200,
-          height: 40,
-          marginTop: 10,
-        }}
-        value={username}
-        onChangeText={(input) => setUsername(input)}
-      />
-      <Text>Type your Password</Text>
-      <TextInput
-        placeholder="Enter your password"
-        secureTextEntry
-        style={{
-          borderWidth: 1,
-          borderColor: "gray",
-          width: 200,
-          height: 40,
-          marginTop: 10,
-        }}
-        value={password}
-        onChangeText={(input) => setPassword(input)}
-      />
-      <StatusBar style="auto" />
-      <Button id="login-button" onPress={handleLogin}>
-        Login
-      </Button>
-    </View>
+      <Header />
+      <View style={styles.content}>
+        <Text>Digite seu usuário</Text>
+        <TextInput
+          style={styles.input}
+          onChangeText={(inputText) => {
+            setUser(inputText);
+          }}
+          value={user}
+          accessibilityLabel="Campo de usuário"
+        />
+        <TextInput />
+        <Text>Digite sua senha</Text>
+        <TextInput
+          style={styles.input}
+          onChangeText={(inputText) => {
+            setPassword(inputText);
+          }}
+          value={password}
+          accessibilityLabel="Campo de senha"
+        />
+        <StatusBar style="auto" />
+        <TouchableOpacity
+          style={styles.button}
+          onPress={handleButtonPress}
+          activeOpacity={0.1}
+        >
+          <Text>Enviar</Text>
+        </TouchableOpacity>
+      </View>
+    </LinearGradient>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+  },
+  content: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 20,
+  },
+  input: {
+    height: 40,
+    borderColor: "gray",
+    borderWidth: 1,
+    marginBottom: 10,
+    paddingHorizontal: 10,
+    width: "100%",
+    borderRadius: 25,
+  },
+  button: {
+    backgroundColor: "inherit",
+    borderColor: "grey",
+    borderWidth: 1,
+    width: "50%",
+    alignItems: "center",
+    padding: 5,
+  },
+});
