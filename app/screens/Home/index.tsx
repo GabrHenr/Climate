@@ -30,10 +30,10 @@ const Home = ({ route }: { route: { params: { userName: string } } }) => {
     try {
       const data = await getWeather(selectedState);
       if (data) {
-        setCurrentTemperature(kelvinToCelsius(data.weather.currentTemperature));
-        setTemperatureMax(kelvinToCelsius(data.weather.temperatureMax));
-        setTemperatureMin(kelvinToCelsius(data.weather.temperatureMin));
-        setFeels_like(kelvinToCelsius(data.weather.feels_like));
+        setCurrentTemperature(data.weather.currentTemperature);
+        setTemperatureMax(data.weather.temperatureMax);
+        setTemperatureMin(data.weather.temperatureMin);
+        setFeels_like(data.weather.feels_like);
         setCurrentHumidity(data.weather.currentHumidity);
         setCurrentWindSpeed(data.weather.currentWindSpeed);
         setCurrentPressure(data.weather.currentPressure);
