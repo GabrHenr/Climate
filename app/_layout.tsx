@@ -1,11 +1,7 @@
-import Header from "@/components/header";
-import { Stack } from "expo-router";
+import Routes from "@/routes";
 
 export default function RootLayout() {
   return (
-    <Stack>
-      <Header />
-      <Stack.Screen name="index" options={{headerShown: false}} />
-    </Stack>
+    <Routes/>
   );
 }

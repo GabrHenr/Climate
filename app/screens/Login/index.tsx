@@ -8,31 +8,26 @@ import {
   View,
   TouchableOpacity,
 } from "react-native";
-import Header from "../components/header";
+import Header from "../../../components/header";
 import { LinearGradient } from "expo-linear-gradient";
+import { useNavigation } from "@react-navigation/native";
 
-export default function App() {
+export default function Login() {
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigation();
 
   const handleButtonPress = () => {
     Alert.alert(
       "Credenciais Digitadas",
       `Usuário: ${user}
-Senha: ${password}`,
-      [
-        {
-          text: "OK",
-          onPress: () => console.log("OK Pressed"),
-          style: "cancel",
-        },
-      ],
-      { cancelable: true },
+      Senha: ${password}`,
     );
+    navigate.navigate("Home", { userName: user });
   };
   return (
     <LinearGradient
-      colors={["#87CEEB", "#FFFFFF"]}
+      colors={["#00b7ff", "#FFFFFF"]}
       style={styles.container}
       start={{ x: 0.5, y: 0 }}
       end={{ x: 0.5, y: 1 }}
