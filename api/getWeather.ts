@@ -1,10 +1,9 @@
 import axios from "axios";
-import 'dotenv/config'
 
 
 const getWeather = async (state: string) => {
     try {
-        const resCurrent = await axios.get(`https://api.weatherapi.com/v1/forecast.json&current.json?key=${process.env.API_KEY}&q=${state}`)
+        const resCurrent = await axios.get(`https://api.weatherapi.com/v1/forecast.json?&current.json?key=${process.env.EXPO_PUBLIC_API_KEY}&q=${state}`)
 
         const weatherData = resCurrent.data;
         const weatherCurrent = weatherData.current;

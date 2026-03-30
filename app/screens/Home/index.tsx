@@ -50,33 +50,33 @@ const Home = ({ route }: { route: { params: { userName: string } } }) => {
         selectedState={selectedState}
         onStateChange={handleStateChange}
       />
-      {/*Temperatura Atual */}
+
       <View style={styles.otherTemperatures}>
-        <TemperatureCardInfo temperature={temperatureMax} />{" "}
-        {/*Temperatura Máxima */}
-        <TemperatureCardInfo temperature={temperatureMin} />{" "}
-        {/*Temperatura Mínima */}
+        <TemperatureCardInfo temperature={temperatureMax} />
+
+        <TemperatureCardInfo temperature={temperatureMin} />
+
       </View>
       <View style={styles.infoField}>
         <Text style={styles.infoText}>Detalhes do Clima</Text>
         <View style={styles.detailsContent}>
           <View style={styles.details}>
             <Text style={styles.descriptionTitle}>Umidade</Text>
-            <Text>{currentHumidity}%</Text> {/*Umidade */}
+            <Text>{currentHumidity}%</Text>
           </View>
           <View style={styles.details}>
             <Text style={styles.descriptionTitle}>Vento</Text>
-            <Text>{currentWindSpeed} km/h</Text> {/*Velocidade do vento */}
+            <Text>{currentWindSpeed} km/h</Text> 
           </View>
         </View>
         <View style={styles.detailsContent}>
           <View style={styles.details}>
             <Text style={styles.descriptionTitle}>Pressão Atmosférica</Text>
-            <Text>{currentPressure} hPa</Text> {/*Pressão atmosférica */}
+            <Text>{currentPressure} hPa</Text>
           </View>
           <View style={styles.details}>
             <Text style={styles.descriptionTitle}>Sensação Térmica</Text>
-            <Text>{feels_like}°C</Text> {/*Sensação térmica */}
+            <Text>{feels_like}°C</Text>
           </View>
         </View>
       </View>
